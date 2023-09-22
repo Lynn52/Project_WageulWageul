@@ -11,12 +11,12 @@ function MyBoard(){
             </div>
             <div className="body">
                 <h2>새 게시글 작성</h2>
-                <input type="text" placeholder="제목"
+                <input type="text" placeholder="제목" value={newPost.title}
                         onChange={(e)=>{
                             setNewPost({...newPost, title : e.target.value});
                         }}>
                 </input><br></br>
-                <textarea placeholder="내용"
+                <textarea placeholder="내용" value={newPost.content}
                             onChange={(e)=>{
                                 setNewPost({...newPost, content : e.target.value});
                             }}>
@@ -28,23 +28,25 @@ function MyBoard(){
                         setPosts(updatePosts);
                         setNewPost({title : '', content : ''});
                     }
+
                 }}>게시</button>
             </div>
 
             <div className="body">
                 <h2>게시글 목록</h2>
-                <div className="bgArea">
+                
                 {
                     posts.map((post)=>{
-                        return(
-                        <span key={post.id}>
-                            <h3 className="postTitle">{post.title}</h3>
-                            <div className="postContent">{post.content}</div>
-                        </span>
-                        )
+                        return(<>
+                            <div className="bgArea">
+                                <span key={post.id}>
+                                    <h3 className="postTitle">{post.title}</h3>
+                                    <div className="postContent">{post.content}</div>
+                                </span>
+                            </div><p></p>
+                            </>)
                     })
                 }
-                </div>
             </div>
         </>
     )
